@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: MediaPress
- * Version: 1.5.9
+ * Version: 1.5.9.1
  * Author: BuddyDev
  * Plugin URI: https://buddydev.com/mediapress/
  * Author URI: https://buddydev.com
@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
 /**
  * The main MediaPress Singleton class
  * you can access the singleton instance using mediapress() function
@@ -28,6 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * Life begins here
  */
+#[AllowDynamicProperties]
 class MediaPress {
 
 
