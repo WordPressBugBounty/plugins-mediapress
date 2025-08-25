@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Get template part (for templates like the media-loop).
  *
  * @param string $slug template part name.
- * @param string $name template part part name(optional, default:'').
+ * @param string $name template part's part name(optional, default:'').
  * @param string $fallback_path Fallback template directory base path.
  *  Used by plugins to supply a default fallback path for the current template file.
  *
@@ -119,17 +119,20 @@ function mpp_locate_template( $template_names, $load = false, $default_path = ''
 	// now the array looks like mediapress/gallery/x.php.
 	$base_dir = mpp_get_template_dir_name();
 
+	$stylesheet_dir = get_stylesheet_directory();
+	$template_dir   = get_template_directory();
+
 	foreach ( $template_names as $template_name ) {
 
 		if ( ! $template_name ) {
 			continue;
 		}
 
-		if ( file_exists( STYLESHEETPATH . '/' . $base_dir . '/' . $template_name ) ) {
-			$located = STYLESHEETPATH . '/' . $base_dir . '/' . $template_name;
+		if ( file_exists( $stylesheet_dir . '/' . $base_dir . '/' . $template_name ) ) {
+			$located = $stylesheet_dir . '/' . $base_dir . '/' . $template_name;
 			break;
-		} elseif ( file_exists( TEMPLATEPATH . '/' . $base_dir . '/' . $template_name ) ) {
-			$located = TEMPLATEPATH . '/' . $base_dir . '/' . $template_name;
+		} elseif ( file_exists( $template_dir . '/' . $base_dir . '/' . $template_name ) ) {
+			$located = $template_dir . '/' . $base_dir . '/' . $template_name;
 			break;
 		} elseif ( file_exists( $default_path . '/' . $template_name ) ) {
 
@@ -160,10 +163,24 @@ function mpp_get_template_dir_name() {
 }
 
 /**
+ * Checks if a template part name is safe for inclusion.
+ *
+ * Allows only alphanumeric characters, dashes, and underscores.
+ * Does NOT check if the file actually exists.
+ *
+ * @param string $name Template part name to validate.
+ * @return bool True if safe, false otherwise.
+ */
+function mpp_is_safe_template_part_name( $name ) {
+	return preg_match( '/^[a-zA-Z0-9_-]+$/', $name );
+}
+
+
+/**
  * Get the asset url by given key.
  *
  * @param string $rel_path relative path of the assets from /mediapress directory(template folder).
- *  e.g images/xyz.png converts to http://pathtotemplateofmediapress/mediapress/images/xyz.png.
+ *  e.g. images/xyz.png converts to http://pathtotemplateofmediapress/mediapress/images/xyz.png.
  * @param string $key unique identifier.
  *
  * @return string
