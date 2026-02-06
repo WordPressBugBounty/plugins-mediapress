@@ -1,5 +1,5 @@
 <?php
-// Exit if the file is accessed directly over web
+// Exit if the file is accessed directly over web.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -42,10 +42,10 @@ if ( ! defined( 'ABSPATH' ) ) {
         <!-- end of remote media -->
 	<?php endif;?>
 
-    <input type='hidden' name='mpp-context' class="mpp-context" id='mpp-context' value="<?php echo $context; ?>"/>
+    <input type='hidden' name='mpp-context' class="mpp-context" id='mpp-context' value="<?php echo esc_attr( $context ); ?>"/>
 
 	<?php if ( $type ) : ?>
-		<input type='hidden' name='mpp-uploading-media-type' class='mpp-uploading-media-type' value="<?php echo $type; ?>"/>
+		<input type='hidden' name='mpp-uploading-media-type' class='mpp-uploading-media-type' value="<?php echo esc_attr( $type ); ?>"/>
 	<?php endif; ?>
 
 	<?php if ( $skip_gallery_check ) : ?>
@@ -53,7 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php endif; ?>
 
 	<?php if ( $gallery_id || $skip_gallery_check ) : ?>
-		<input type='hidden' name='mpp-shortcode-upload-gallery-id' id='mpp-shortcode-upload-gallery-id' value="<?php echo $gallery_id; ?>"/>
+		<input type='hidden' name='mpp-shortcode-upload-gallery-id' id='mpp-shortcode-upload-gallery-id' value="<?php echo esc_attr( $gallery_id ); ?>"/>
 
 	<?php else : ?>
 		<?php

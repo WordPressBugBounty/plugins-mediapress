@@ -2,8 +2,8 @@
 Contributors: buddydev,sbrajesh,raviousprime,pressprogrammer
 Tags: buddypress, buddypress gallery, buddypress photo gallery, video gallery, media
 Requires at least: 5.0
-Tested up to: 6.8.2
-Stable tag: 1.6.0
+Tested up to: 6.9.0
+Stable tag: 1.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -162,9 +162,23 @@ Please install [BP Classic](https://wordpress.org/plugins/bp-classic/) plugin to
 Please see the demo or the MediaPress site for more screenshots.
 
 == Changelog ==
+
+= 1.6.3 =
+ * Proper escaping for all template outputs(escaping attributes).
+ * Fixed a possible stored XSS in mpp-list-gallery gallery list shortcode for contributor or above role(people who can add shortcode in post).
+ * Props zaim via Patchstack for reporting the possible stored xss in the shortcode.
+
+= 1.6.2 =
+ * Ensures that the uploader and gallery creation shortcode always escape output.
+ * Fixed a possible stored XSS in media upload shortcode for contributor or above role(people who can add shortcode in post).
+ * Props zaim via Wordfence for reporting the possible stored xss in uploader shortcode.
+
+= 1.6.1 =
+ * Added a filter `mpp_main_gallery_dir_ajax_query_args` to allow filtering directory lists on ajax request.
+
 = 1.6.0 =
  * Fixed security issue allowing contributors to include local file inclusion in shortcodes. Props zaim via Patchstack.
- * Updated deprecated BuddyPress url fucntions with the alternative when available.
+ * Updated deprecated BuddyPress url functions with the alternative when available.
  * Added redirect on sitewide gallery archive if BuddyPress Gallery directory is enabled.
  * Fixed media/gallery permalink trailing slash issue on sites not using trailing slash in permalinks.
 
